@@ -22,7 +22,7 @@ pipeline {
               bat 'mvn clean install'
             }
         }
-        stage('Static Code Analysis') {
+        stage('SonarQube Analysis') {
             steps {
                 script {
                      withSonarQubeEnv(credentialsId: 'sonar-api-key') {
@@ -33,7 +33,7 @@ pipeline {
             }
         }
     }
-}
+
 
     post
     {
@@ -42,3 +42,4 @@ pipeline {
             emailext attachLog: true, body: 'Your pipeline build was successful. ', subject: 'Pipeline Status Report', to: 'dhirajmankar1210@gmail.com'
         }
     }
+}
