@@ -7,6 +7,11 @@ pipeline {
               git 'https://github.com/dhirajmankar90/demo-counter-app.git'
             }
         }
+        stage('Unit testing') {
+            steps {
+              bat 'mvn test'
+            }
+        }
 }
 
 }
