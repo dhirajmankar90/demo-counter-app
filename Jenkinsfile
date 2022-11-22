@@ -22,17 +22,16 @@ pipeline {
               bat 'mvn clean install'
             }
         }
-        stage('SonarQube Analysis') {
+    
+        stage('Quality gate Status') {
             steps {
                 script {
-                     withSonarQubeEnv(credentialsId: 'sonar-api-key') {
-                     bat 'mvn clean package sonar:sonar'  
+                     waitForQualityGate abortPipeline: false, credentialsId: 'sonar-api-key'  
                      }
                 }
                  
             }
         }
-    }
 
 
     post
