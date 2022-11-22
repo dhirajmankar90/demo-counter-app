@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    tools {
-         maven 
-    }
-
     stages {
         stage('Git Checkout stage') {
             steps {
