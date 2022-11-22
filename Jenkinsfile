@@ -9,17 +9,17 @@ pipeline {
         }
         stage('Unit testing') {
             steps {
-              bat 'mvn test'
+              sh 'mvn test'
             }
         }
         stage('Integration testing') {
             steps {
-              bat 'mvn verify -DskipUnitTests'
+              sh 'mvn verify -DskipUnitTests'
             }
         }
         stage('maven Build') {
             steps {
-              bat 'mvn clean install'
+              sh 'mvn clean install'
             }
         }
     
