@@ -72,7 +72,7 @@ pipeline {
                 }
             }
         }
-        stage ('Static code analysis') {
+        stage ('push to dockerhub') {
         steps {
             script {
                  withCredentials([usernameColonPassword(credentialsId: 'dockerHub-Authentication', variable: 'DockerHub_Creds')]) {
