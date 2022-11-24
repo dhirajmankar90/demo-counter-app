@@ -72,6 +72,17 @@ pipeline {
                 }
             }
         }
+        stage ('Static code analysis') {
+        steps {
+            script {
+                 withCredentials([usernameColonPassword(credentialsId: 'dockerHub-Authentication', variable: 'DockerHub_Creds')]) {
+                 sh 'docker login -u dhirajmankar90 -p ${DockerHub_Creds}'
+                 sh 'docker image push dhirajmankar90/$JOB_NAME:v1.$BUILD_ID'     
+                 sh 'docker image push dhirajmankar90/$JOB_NAME:latest'      
+                }
+                }
+            }
+        }
 
     }
 }
